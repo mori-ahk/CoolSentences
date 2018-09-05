@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A58F95102140A0BD005E9A78 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58F950F2140A0BD005E9A78 /* Sentence.swift */; };
+		A58F95122140A25B005E9A78 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
 		F52C8B2021409F3600B8A32D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B1F21409F3600B8A32D /* Assets.xcassets */; };
 		F52C8B2721409F3600B8A32D /* CoolSentences MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F52C8B2621409F3600B8A32D /* CoolSentences MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F52C8B2C21409F3600B8A32D /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52C8B2B21409F3600B8A32D /* Messages.framework */; };
@@ -40,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A58F950F2140A0BD005E9A78 /* Sentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
+		A58F95112140A25B005E9A78 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		F52C8B1C21409F3500B8A32D /* CoolSentences.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolSentences.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F52C8B1F21409F3600B8A32D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F52C8B2121409F3600B8A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +67,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A58F950E2140A0B2005E9A78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A58F95112140A25B005E9A78 /* data.txt */,
+				A58F950F2140A0BD005E9A78 /* Sentence.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F52C8B1521409F3500B8A32D = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,7 @@
 		F52C8B1E21409F3500B8A32D /* CoolSentences */ = {
 			isa = PBXGroup;
 			children = (
+				A58F950E2140A0B2005E9A78 /* Model */,
 				F52C8B1F21409F3600B8A32D /* Assets.xcassets */,
 				F52C8B2121409F3600B8A32D /* Info.plist */,
 			);
@@ -189,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58F95122140A25B005E9A78 /* data.txt in Resources */,
 				F52C8B2021409F3600B8A32D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58F95102140A0BD005E9A78 /* Sentence.swift in Sources */,
 				F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
