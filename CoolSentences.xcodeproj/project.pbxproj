@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F52C8B2021409F3600B8A32D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B1F21409F3600B8A32D /* Assets.xcassets */; };
+		F52C8B2721409F3600B8A32D /* CoolSentences MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F52C8B2621409F3600B8A32D /* CoolSentences MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F52C8B2C21409F3600B8A32D /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52C8B2B21409F3600B8A32D /* Messages.framework */; };
+		F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C8B2E21409F3600B8A32D /* MessagesViewController.swift */; };
+		F52C8B3221409F3600B8A32D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B3021409F3600B8A32D /* MainInterface.storyboard */; };
+		F52C8B3421409F3700B8A32D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B3321409F3700B8A32D /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F52C8B2821409F3600B8A32D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F52C8B1621409F3500B8A32D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F52C8B2521409F3600B8A32D;
+			remoteInfo = "CoolSentences MessagesExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F52C8B3B21409F3700B8A32D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F52C8B2721409F3600B8A32D /* CoolSentences MessagesExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F52C8B1C21409F3500B8A32D /* CoolSentences.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolSentences.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F52C8B1F21409F3600B8A32D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F52C8B2121409F3600B8A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F52C8B2621409F3600B8A32D /* CoolSentences MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CoolSentences MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F52C8B2B21409F3600B8A32D /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		F52C8B2E21409F3600B8A32D /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		F52C8B3121409F3600B8A32D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		F52C8B3321409F3700B8A32D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F52C8B3521409F3700B8A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F52C8B2321409F3600B8A32D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F52C8B2C21409F3600B8A32D /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F52C8B1521409F3500B8A32D = {
+			isa = PBXGroup;
+			children = (
+				F52C8B1E21409F3500B8A32D /* CoolSentences */,
+				F52C8B2D21409F3600B8A32D /* CoolSentences MessagesExtension */,
+				F52C8B2A21409F3600B8A32D /* Frameworks */,
+				F52C8B1D21409F3500B8A32D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F52C8B1D21409F3500B8A32D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F52C8B1C21409F3500B8A32D /* CoolSentences.app */,
+				F52C8B2621409F3600B8A32D /* CoolSentences MessagesExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F52C8B1E21409F3500B8A32D /* CoolSentences */ = {
+			isa = PBXGroup;
+			children = (
+				F52C8B1F21409F3600B8A32D /* Assets.xcassets */,
+				F52C8B2121409F3600B8A32D /* Info.plist */,
+			);
+			path = CoolSentences;
+			sourceTree = "<group>";
+		};
+		F52C8B2A21409F3600B8A32D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F52C8B2B21409F3600B8A32D /* Messages.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F52C8B2D21409F3600B8A32D /* CoolSentences MessagesExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F52C8B2E21409F3600B8A32D /* MessagesViewController.swift */,
+				F52C8B3021409F3600B8A32D /* MainInterface.storyboard */,
+				F52C8B3321409F3700B8A32D /* Assets.xcassets */,
+				F52C8B3521409F3700B8A32D /* Info.plist */,
+			);
+			path = "CoolSentences MessagesExtension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F52C8B1B21409F3500B8A32D /* CoolSentences */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F52C8B3C21409F3700B8A32D /* Build configuration list for PBXNativeTarget "CoolSentences" */;
+			buildPhases = (
+				F52C8B1A21409F3500B8A32D /* Resources */,
+				F52C8B3B21409F3700B8A32D /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F52C8B2921409F3600B8A32D /* PBXTargetDependency */,
+			);
+			name = CoolSentences;
+			productName = CoolSentences;
+			productReference = F52C8B1C21409F3500B8A32D /* CoolSentences.app */;
+			productType = "com.apple.product-type.application.messages";
+		};
+		F52C8B2521409F3600B8A32D /* CoolSentences MessagesExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F52C8B3821409F3700B8A32D /* Build configuration list for PBXNativeTarget "CoolSentences MessagesExtension" */;
+			buildPhases = (
+				F52C8B2221409F3600B8A32D /* Sources */,
+				F52C8B2321409F3600B8A32D /* Frameworks */,
+				F52C8B2421409F3600B8A32D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CoolSentences MessagesExtension";
+			productName = "CoolSentences MessagesExtension";
+			productReference = F52C8B2621409F3600B8A32D /* CoolSentences MessagesExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F52C8B1621409F3500B8A32D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Morteza Ahmadi";
+				TargetAttributes = {
+					F52C8B1B21409F3500B8A32D = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					F52C8B2521409F3600B8A32D = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = F52C8B1921409F3500B8A32D /* Build configuration list for PBXProject "CoolSentences" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F52C8B1521409F3500B8A32D;
+			productRefGroup = F52C8B1D21409F3500B8A32D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F52C8B1B21409F3500B8A32D /* CoolSentences */,
+				F52C8B2521409F3600B8A32D /* CoolSentences MessagesExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F52C8B1A21409F3500B8A32D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F52C8B2021409F3600B8A32D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F52C8B2421409F3600B8A32D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F52C8B3421409F3700B8A32D /* Assets.xcassets in Resources */,
+				F52C8B3221409F3600B8A32D /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F52C8B2221409F3600B8A32D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F52C8B2921409F3600B8A32D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F52C8B2521409F3600B8A32D /* CoolSentences MessagesExtension */;
+			targetProxy = F52C8B2821409F3600B8A32D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F52C8B3021409F3600B8A32D /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F52C8B3121409F3600B8A32D /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F52C8B3621409F3700B8A32D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F52C8B3721409F3700B8A32D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F52C8B3921409F3700B8A32D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8MTN2VWRH;
+				INFOPLIST_FILE = "CoolSentences MessagesExtension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Morteza-Ahmadi.CoolSentences.MessagesExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F52C8B3A21409F3700B8A32D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8MTN2VWRH;
+				INFOPLIST_FILE = "CoolSentences MessagesExtension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Morteza-Ahmadi.CoolSentences.MessagesExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F52C8B3D21409F3700B8A32D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8MTN2VWRH;
+				INFOPLIST_FILE = CoolSentences/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "Morteza-Ahmadi.CoolSentences";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F52C8B3E21409F3700B8A32D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8MTN2VWRH;
+				INFOPLIST_FILE = CoolSentences/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "Morteza-Ahmadi.CoolSentences";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F52C8B1921409F3500B8A32D /* Build configuration list for PBXProject "CoolSentences" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F52C8B3621409F3700B8A32D /* Debug */,
+				F52C8B3721409F3700B8A32D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F52C8B3821409F3700B8A32D /* Build configuration list for PBXNativeTarget "CoolSentences MessagesExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F52C8B3921409F3700B8A32D /* Debug */,
+				F52C8B3A21409F3700B8A32D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F52C8B3C21409F3700B8A32D /* Build configuration list for PBXNativeTarget "CoolSentences" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F52C8B3D21409F3700B8A32D /* Debug */,
+				F52C8B3E21409F3700B8A32D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F52C8B1621409F3500B8A32D /* Project object */;
+}
