@@ -13,7 +13,17 @@ class MessagesViewController: MSMessagesAppViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Warehouse.sharedInstance().readFile()
+//        let startTime = Date()
+        Warehouse.sharedInstance().updateModel()
+//        let endTime = Date()
+//        print(endTime.timeIntervalSince(startTime))
+//        print("done")
+//        let encoder = JSONEncoder()
+//        encoder.outputFormatting = .prettyPrinted
+//        Warehouse.sharedInstance().sentences.forEach({
+//            let data = try? encoder.encode($0)
+//            print(String(data: data!, encoding: .utf8)!)
+//        })
         
     }
     

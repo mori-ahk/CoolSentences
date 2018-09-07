@@ -20,14 +20,22 @@ class Warehouse {
     }
     private init() {}
     
-    func readFile() {
+    var sentences = [Sentence]()
+    var hashtags = Set<String>()
+    
+    func updateModel() {
+        readFile()
+        updateHashtags()
+    }
+    
+    private func readFile() {
         
         if let filepath = Bundle.main.path(forResource: "data", ofType: "txt") {
           
             do {
                 let contents = try String(contentsOfFile: filepath)
                 let allSentences = contents.components(separatedBy: .newlines)
-                sentenceObject(from: allSentences)
+                fillSentencesArray(from: allSentences)
             } catch {
                 print(error)
                 return
@@ -35,23 +43,29 @@ class Warehouse {
         }
     }
     
-    private func sentenceObject(from sentences: [String]) {
-        var sentencesArray = [Sentence]()
-        var text: String = ""
-        var tags: String = ""
-        var source: String = ""
-        for i in 0...(sentences.count - 1) {
-            if i % 5 == 1 {
-                text = sentences[i]
-            } else if i % 5 == 2 {
-                tags = sentences[i]
-            } else if i % 5 == 3 {
-                source = sentences[i]
+    private func fillSentencesArray(from lines: [String]) {
+        var sentenceObject: Sentence?
+        for i in 0...(lines.count - 1) {
+            switch (i % 5) {
+            case 0:
+                sentenceObject = Sentence()
+            case 1:
+                sentenceObject!.text = lines[i]
+            case 2:
+                sentenceObject!.initTags(lines[i])
+            case 3:
+                sentenceObject!.source = lines[i]
+            case 4:
+                sentences.append(sentenceObject!)
+            default:
+                print("error")
             }
-            if i % 5 == 0 {
-                let sentenceObject = Sentence.init(text: text, source: source, tags: tags)
-                sentencesArray.append(sentenceObject)
-            }
+        }
+    }
+    
+    private func updateHashtags() {
+        sentences.forEach { (sentence) in
+            sentence.tags.forEach({hashtags.insert($0)})
         }
     }
 }

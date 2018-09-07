@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Sentence {
+class Sentence: Codable {
     var text: String
     var source: String
     var tags: [String] = []
