@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A58F95102140A0BD005E9A78 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58F950F2140A0BD005E9A78 /* Sentence.swift */; };
-		A58F95122140A25B005E9A78 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
-		F52C8B2021409F3600B8A32D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B1F21409F3600B8A32D /* Assets.xcassets */; };
 		F52C8B2721409F3600B8A32D /* CoolSentences MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F52C8B2621409F3600B8A32D /* CoolSentences MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F52C8B2C21409F3600B8A32D /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52C8B2B21409F3600B8A32D /* Messages.framework */; };
 		F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C8B2E21409F3600B8A32D /* MessagesViewController.swift */; };
 		F52C8B3221409F3600B8A32D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B3021409F3600B8A32D /* MainInterface.storyboard */; };
 		F52C8B3421409F3700B8A32D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B3321409F3700B8A32D /* Assets.xcassets */; };
+		F52C8B402140A57500B8A32D /* Warehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C8B3F2140A57500B8A32D /* Warehouse.swift */; };
+		F53DD06A214201F7006D9A87 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
+		F53DD06B214201F7006D9A87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B1F21409F3600B8A32D /* Assets.xcassets */; };
+		F53DD06C214202C9006D9A87 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,7 @@
 		F52C8B3121409F3600B8A32D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		F52C8B3321409F3700B8A32D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F52C8B3521409F3700B8A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F52C8B3F2140A57500B8A32D /* Warehouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warehouse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +73,8 @@
 		A58F950E2140A0B2005E9A78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A58F95112140A25B005E9A78 /* data.txt */,
 				A58F950F2140A0BD005E9A78 /* Sentence.swift */,
+				F52C8B3F2140A57500B8A32D /* Warehouse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,6 +82,7 @@
 		F52C8B1521409F3500B8A32D = {
 			isa = PBXGroup;
 			children = (
+				A58F95112140A25B005E9A78 /* data.txt */,
 				F52C8B1E21409F3500B8A32D /* CoolSentences */,
 				F52C8B2D21409F3600B8A32D /* CoolSentences MessagesExtension */,
 				F52C8B2A21409F3600B8A32D /* Frameworks */,
@@ -203,8 +207,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A58F95122140A25B005E9A78 /* data.txt in Resources */,
-				F52C8B2021409F3600B8A32D /* Assets.xcassets in Resources */,
+				F53DD06A214201F7006D9A87 /* data.txt in Resources */,
+				F53DD06B214201F7006D9A87 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52C8B3421409F3700B8A32D /* Assets.xcassets in Resources */,
+				F53DD06C214202C9006D9A87 /* data.txt in Resources */,
 				F52C8B3221409F3600B8A32D /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58F95102140A0BD005E9A78 /* Sentence.swift in Sources */,
+				F52C8B402140A57500B8A32D /* Warehouse.swift in Sources */,
 				F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

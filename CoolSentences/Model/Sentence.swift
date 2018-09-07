@@ -22,7 +22,15 @@ class Sentence {
     func initTags(_ tags: String) {
         let tagsWithHashtag = tags.split(separator: " ")
         tagsWithHashtag.forEach {
-            self.tags.append(String($0.dropFirst()))
+            self.tags.append($0.dropFirst().lowercased())
         }
     }
+    
+    init() {
+        self.text = ""
+        self.source = ""
+        self.tags = []
+    }
+    
+    
 }
