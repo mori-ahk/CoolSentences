@@ -17,6 +17,11 @@
 		F53DD06A214201F7006D9A87 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
 		F53DD06B214201F7006D9A87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B1F21409F3600B8A32D /* Assets.xcassets */; };
 		F53DD06C214202C9006D9A87 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
+		F58237C421485989009A0CED /* WSTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE03F2148581400232E40 /* WSTag.swift */; };
+		F58237C52148598C009A0CED /* WSTagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE0402148581400232E40 /* WSTagsField.swift */; };
+		F58237C62148598E009A0CED /* WSTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE0412148581400232E40 /* WSTagView.swift */; };
+		F58237C721485991009A0CED /* BackspaceDetectingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE0422148581400232E40 /* BackspaceDetectingTextField.swift */; };
+		F58237C8214859B9009A0CED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE03E2148581400232E40 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,6 +256,11 @@
 				A58F95102140A0BD005E9A78 /* Sentence.swift in Sources */,
 				F52C8B402140A57500B8A32D /* Warehouse.swift in Sources */,
 				F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */,
+				F58237C721485991009A0CED /* BackspaceDetectingTextField.swift in Sources */,
+				F58237C421485989009A0CED /* WSTag.swift in Sources */,
+				F58237C52148598C009A0CED /* WSTagsField.swift in Sources */,
+				F58237C62148598E009A0CED /* WSTagView.swift in Sources */,
+				F58237C8214859B9009A0CED /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ public struct WSTag: Hashable {
     public let text: String
 
     public init(_ text: String) {
-        self.text = text
+        self.text = "#\(text)"
     }
 
     public var hashValue: Int {

@@ -109,7 +109,7 @@ open class WSTagsField: UIScrollView {
         }
     }
 
-    open var placeholder: String = "Tags" {
+    open var placeholder: String = "Search for hashtags..." {
         didSet {
             updatePlaceholderTextVisibility()
         }
@@ -698,7 +698,7 @@ extension WSTagsField {
         }
 
         self.isScrollEnabled = contentRect.height + contentInset.top + contentInset.bottom >= newIntrinsicContentHeight
-        self.contentSize.width = self.bounds.width - contentInset.left - contentInset.right
+        self.contentSize.width = self.bounds.width - contentInset.left - contentInset.right - 20
         self.contentSize.height = contentRect.height
 
         if self.isScrollEnabled {
@@ -714,7 +714,7 @@ extension WSTagsField {
     private func attributedPlaceholder() -> NSAttributedString {
         var attributes: [NSAttributedStringKey: Any]?
         if let placeholderColor = placeholderColor {
-            attributes = [NSAttributedStringKey.foregroundColor: placeholderColor]
+            attributes = [NSAttributedStringKey.foregroundColor: placeholderColor.withAlphaComponent(0.6)]
         }
         return NSAttributedString(string: placeholder, attributes: attributes)
     }
