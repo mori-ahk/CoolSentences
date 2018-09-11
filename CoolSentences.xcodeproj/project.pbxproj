@@ -46,6 +46,11 @@
 /* Begin PBXFileReference section */
 		A58F950F2140A0BD005E9A78 /* Sentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
 		A58F95112140A25B005E9A78 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
+		A5FCE03E2148581400232E40 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A5FCE03F2148581400232E40 /* WSTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTag.swift; sourceTree = "<group>"; };
+		A5FCE0402148581400232E40 /* WSTagsField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTagsField.swift; sourceTree = "<group>"; };
+		A5FCE0412148581400232E40 /* WSTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTagView.swift; sourceTree = "<group>"; };
+		A5FCE0422148581400232E40 /* BackspaceDetectingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackspaceDetectingTextField.swift; sourceTree = "<group>"; };
 		F52C8B1C21409F3500B8A32D /* CoolSentences.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolSentences.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F52C8B1F21409F3600B8A32D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F52C8B2121409F3600B8A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +84,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A5FCE03D2148581400232E40 /* WSTagsField */ = {
+			isa = PBXGroup;
+			children = (
+				A5FCE03E2148581400232E40 /* Constants.swift */,
+				A5FCE03F2148581400232E40 /* WSTag.swift */,
+				A5FCE0402148581400232E40 /* WSTagsField.swift */,
+				A5FCE0412148581400232E40 /* WSTagView.swift */,
+				A5FCE0422148581400232E40 /* BackspaceDetectingTextField.swift */,
+			);
+			name = WSTagsField;
+			path = CoolSentences/WSTagsField;
+			sourceTree = SOURCE_ROOT;
+		};
 		F52C8B1521409F3500B8A32D = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +120,7 @@
 		F52C8B1E21409F3500B8A32D /* CoolSentences */ = {
 			isa = PBXGroup;
 			children = (
+				A5FCE03D2148581400232E40 /* WSTagsField */,
 				A58F950E2140A0B2005E9A78 /* Model */,
 				F52C8B1F21409F3600B8A32D /* Assets.xcassets */,
 				F52C8B2121409F3600B8A32D /* Info.plist */,
