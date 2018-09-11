@@ -14,7 +14,8 @@ class MessagesViewController: MSMessagesAppViewController {
     private let array = ["funny", "hello", "birthday", "jokes", "pickuplines"]
     
     private lazy var tagsField : WSTagsField = {
-        let field = WSTagsField()
+        let rect = CGRect(x: 0, y: 0, width: self.view.frame.width - 60, height: 40)
+        let field = WSTagsField(frame: rect)
         field.layoutMargins = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
         field.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         field.spaceBetweenLines = 4.0
@@ -73,6 +74,10 @@ class MessagesViewController: MSMessagesAppViewController {
         button.setTitle("Go", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
+        button.isHidden = true
+        button.layer.cornerRadius = 20
+        button.clipsToBounds = true
+        button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -97,17 +102,17 @@ class MessagesViewController: MSMessagesAppViewController {
         self.view.addSubview(tagsField)
         self.view.addSubview(tagsTableView)
         self.view.addSubview(swipeUpLabel)
+        self.view.addSubview(goButton)
         tableViewHeader.addSubview(suggestionsLabel)
         
         //MARK: - Layout Constraint
         NSLayoutConstraint.activate([
-            tagsField.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
-            tagsField.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            tagsField.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            tagsField.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 12),
+            tagsField.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8)
             ])
         
         NSLayoutConstraint.activate([
-            tagsTableView.topAnchor.constraint(equalTo: self.tagsField.bottomAnchor, constant: 25),
+            tagsTableView.topAnchor.constraint(equalTo: self.tagsField.bottomAnchor, constant: 8),
             tagsTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             tagsTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             tagsTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
@@ -125,16 +130,27 @@ class MessagesViewController: MSMessagesAppViewController {
             swipeUpLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100)
             ])
         
+        NSLayoutConstraint.activate([
+            goButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 12),
+            goButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -2),
+            goButton.leftAnchor.constraint(equalTo: self.tagsField.rightAnchor, constant: 4),
+            goButton.heightAnchor.constraint(equalTo: tagsField.heightAnchor),
+            goButton.centerYAnchor.constraint(equalTo: tagsField.centerYAnchor)
+            ])
+        
+        tagsField.onDidChangeHeightTo = { (_,_) in
+            self.view.layoutIfNeeded()
+        }
         Warehouse.sharedInstance().updateModel()
+        goButton.addTarget(self, action: #selector(onButtonClicked), for: .touchUpInside)
     }
-   
     
-    private func showButtonOnDidChangeText() {
-        tagsField.onDidChangeText = { (_,_) in
-            
+    @objc func onButtonClicked() {
+        UIView.animate(withDuration: 0.5) {
+            self.tagsTableView.alpha = 0
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -143,7 +159,7 @@ class MessagesViewController: MSMessagesAppViewController {
     
     // MARK: - Conversation Handling
     
-    //2
+    
     override func willBecomeActive(with conversation: MSConversation) {
         
         // Called when the extension is about to move from the inactive to active state.
@@ -186,11 +202,13 @@ class MessagesViewController: MSMessagesAppViewController {
             tagsTableView.isHidden = true
             tagsField.isHidden = true
             swipeUpLabel.isHidden = false
+            goButton.isHidden = true
             tagsField.removeTags()
         } else {
             tagsTableView.isHidden = false
             tagsField.isHidden = false
             swipeUpLabel.isHidden = true
+            goButton.isHidden = false
         }
         // Called before the extension transitions to a new presentation style.
         
@@ -219,6 +237,7 @@ extension MessagesViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tagsField.addTag(array[indexPath.row])
+
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
