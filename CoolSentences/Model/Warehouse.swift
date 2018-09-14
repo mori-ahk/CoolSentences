@@ -18,12 +18,14 @@ class Warehouse {
     class func sharedInstance() -> Warehouse {
         return shared
     }
-    private init() {}
+    private init() {
+        updateModel()
+    }
     
     var sentences = [Sentence]()
     var hashtags = Set<String>()
     
-    func updateModel() {
+    private func updateModel() {
         readFile()
         updateHashtags()
     }

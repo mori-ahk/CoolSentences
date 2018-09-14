@@ -26,5 +26,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Compact First Page View Controller-->
+        <scene sceneID="SLy-ez-leG">
+            <objects>
+                <viewController storyboardIdentifier="compactFirstPageStoryboardID" id="lhY-eK-QBX" customClass="CompactFirstPageViewController" customModule="CoolSentences_MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pEo-lK-vc4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wds-dO-jS5" customClass="WSTagsField" customModule="CoolSentences_MessagesExtension" customModuleProvider="target">
+                                <rect key="frame" x="40" y="239" width="240" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="m8Y-jx-pGY"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wds-dO-jS5" firstAttribute="centerY" secondItem="pEo-lK-vc4" secondAttribute="centerY" id="Iak-7a-5Zu"/>
+                            <constraint firstItem="wds-dO-jS5" firstAttribute="leading" secondItem="r5A-k3-uZa" secondAttribute="leading" constant="40" id="MQW-An-AY6"/>
+                            <constraint firstItem="wds-dO-jS5" firstAttribute="centerX" secondItem="pEo-lK-vc4" secondAttribute="centerX" id="Oey-Ps-NKz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r5A-k3-uZa"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="tagsField" destination="wds-dO-jS5" id="9eQ-b8-Qfj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JmR-Sh-3Ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684.79999999999995" y="32.383808095952027"/>
+        </scene>
+        <!--Expanded First Page View Controller-->
+        <scene sceneID="vwq-ls-r3w">
+            <objects>
+                <viewController storyboardIdentifier="expandedFirstPageStoryboardID" id="030-gM-iFC" customClass="ExpandedFirstPageViewController" customModule="CoolSentences_MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kkf-DQ-5mw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-pl-Kzq" customClass="WSTagsField" customModule="CoolSentences_MessagesExtension" customModuleProvider="target">
+                                <rect key="frame" x="40" y="28" width="240" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JN2-7t-afa"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1fG-pl-Kzq" firstAttribute="leading" secondItem="7Ld-vV-S4J" secondAttribute="leading" constant="40" id="AaC-1n-m8x"/>
+                            <constraint firstItem="1fG-pl-Kzq" firstAttribute="top" secondItem="7Ld-vV-S4J" secondAttribute="top" constant="8" id="WlL-yr-CnV"/>
+                            <constraint firstItem="1fG-pl-Kzq" firstAttribute="centerX" secondItem="Kkf-DQ-5mw" secondAttribute="centerX" id="ZxW-Sq-7o9"/>
+                            <constraint firstItem="7Ld-vV-S4J" firstAttribute="trailing" secondItem="1fG-pl-Kzq" secondAttribute="trailing" constant="40" id="aOx-Na-pqB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Ld-vV-S4J"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="tagsField" destination="1fG-pl-Kzq" id="b4d-MD-LqH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFc-nX-cAX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="32"/>
+        </scene>
     </scenes>
 </document>

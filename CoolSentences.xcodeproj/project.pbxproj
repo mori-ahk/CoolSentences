@@ -14,14 +14,11 @@
 		F52C8B3221409F3600B8A32D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B3021409F3600B8A32D /* MainInterface.storyboard */; };
 		F52C8B3421409F3700B8A32D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B3321409F3700B8A32D /* Assets.xcassets */; };
 		F52C8B402140A57500B8A32D /* Warehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C8B3F2140A57500B8A32D /* Warehouse.swift */; };
+		F52E3EEF2148A6FB003B79A2 /* CompactFirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E3EEE2148A6FB003B79A2 /* CompactFirstPageViewController.swift */; };
+		F52E3EF12148AD02003B79A2 /* ExpandedFirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E3EF02148AD02003B79A2 /* ExpandedFirstPageViewController.swift */; };
 		F53DD06A214201F7006D9A87 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
 		F53DD06B214201F7006D9A87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52C8B1F21409F3600B8A32D /* Assets.xcassets */; };
 		F53DD06C214202C9006D9A87 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
-		F58237C421485989009A0CED /* WSTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE03F2148581400232E40 /* WSTag.swift */; };
-		F58237C52148598C009A0CED /* WSTagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE0402148581400232E40 /* WSTagsField.swift */; };
-		F58237C62148598E009A0CED /* WSTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE0412148581400232E40 /* WSTagView.swift */; };
-		F58237C721485991009A0CED /* BackspaceDetectingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE0422148581400232E40 /* BackspaceDetectingTextField.swift */; };
-		F58237C8214859B9009A0CED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCE03E2148581400232E40 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,11 +48,6 @@
 /* Begin PBXFileReference section */
 		A58F950F2140A0BD005E9A78 /* Sentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
 		A58F95112140A25B005E9A78 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
-		A5FCE03E2148581400232E40 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A5FCE03F2148581400232E40 /* WSTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTag.swift; sourceTree = "<group>"; };
-		A5FCE0402148581400232E40 /* WSTagsField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTagsField.swift; sourceTree = "<group>"; };
-		A5FCE0412148581400232E40 /* WSTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTagView.swift; sourceTree = "<group>"; };
-		A5FCE0422148581400232E40 /* BackspaceDetectingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackspaceDetectingTextField.swift; sourceTree = "<group>"; };
 		F52C8B1C21409F3500B8A32D /* CoolSentences.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolSentences.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F52C8B1F21409F3600B8A32D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F52C8B2121409F3600B8A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +58,8 @@
 		F52C8B3321409F3700B8A32D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F52C8B3521409F3700B8A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F52C8B3F2140A57500B8A32D /* Warehouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warehouse.swift; sourceTree = "<group>"; };
+		F52E3EEE2148A6FB003B79A2 /* CompactFirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFirstPageViewController.swift; sourceTree = "<group>"; };
+		F52E3EF02148AD02003B79A2 /* ExpandedFirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFirstPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,19 +82,6 @@
 			);
 			path = Model;
 			sourceTree = "<group>";
-		};
-		A5FCE03D2148581400232E40 /* WSTagsField */ = {
-			isa = PBXGroup;
-			children = (
-				A5FCE03E2148581400232E40 /* Constants.swift */,
-				A5FCE03F2148581400232E40 /* WSTag.swift */,
-				A5FCE0402148581400232E40 /* WSTagsField.swift */,
-				A5FCE0412148581400232E40 /* WSTagView.swift */,
-				A5FCE0422148581400232E40 /* BackspaceDetectingTextField.swift */,
-			);
-			name = WSTagsField;
-			path = CoolSentences/WSTagsField;
-			sourceTree = SOURCE_ROOT;
 		};
 		F52C8B1521409F3500B8A32D = {
 			isa = PBXGroup;
@@ -125,7 +106,6 @@
 		F52C8B1E21409F3500B8A32D /* CoolSentences */ = {
 			isa = PBXGroup;
 			children = (
-				A5FCE03D2148581400232E40 /* WSTagsField */,
 				A58F950E2140A0B2005E9A78 /* Model */,
 				F52C8B1F21409F3600B8A32D /* Assets.xcassets */,
 				F52C8B2121409F3600B8A32D /* Info.plist */,
@@ -145,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				F52C8B2E21409F3600B8A32D /* MessagesViewController.swift */,
+				F52E3EEE2148A6FB003B79A2 /* CompactFirstPageViewController.swift */,
+				F52E3EF02148AD02003B79A2 /* ExpandedFirstPageViewController.swift */,
 				F52C8B3021409F3600B8A32D /* MainInterface.storyboard */,
 				F52C8B3321409F3700B8A32D /* Assets.xcassets */,
 				F52C8B3521409F3700B8A32D /* Info.plist */,
@@ -253,14 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F52E3EEF2148A6FB003B79A2 /* CompactFirstPageViewController.swift in Sources */,
 				A58F95102140A0BD005E9A78 /* Sentence.swift in Sources */,
 				F52C8B402140A57500B8A32D /* Warehouse.swift in Sources */,
 				F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */,
-				F58237C721485991009A0CED /* BackspaceDetectingTextField.swift in Sources */,
-				F58237C421485989009A0CED /* WSTag.swift in Sources */,
-				F58237C52148598C009A0CED /* WSTagsField.swift in Sources */,
-				F58237C62148598E009A0CED /* WSTagView.swift in Sources */,
-				F58237C8214859B9009A0CED /* Constants.swift in Sources */,
+				F52E3EF12148AD02003B79A2 /* ExpandedFirstPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
