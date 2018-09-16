@@ -8,15 +8,31 @@
 
 import UIKit
 
-class CompactFirstPageViewController : UIViewController {
+class CompactFirstPageViewController : UIViewController, UISearchBarDelegate {
+    
+    weak var delegate : CompactFirstPageViewControllerDelegate?
+    
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+        }
+    }
     
     static let storyboardIdentifier = "compactFirstPageStoryboardID"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        delegate?.requestPresentationSyle()
+    }
+    
     
 }
 
-
+protocol CompactFirstPageViewControllerDelegate: class {
+    func requestPresentationSyle()
+}

@@ -10,7 +10,7 @@ import UIKit
 import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,6 @@ class MessagesViewController: MSMessagesAppViewController {
         let controller: UIViewController
         if presentationStyle == .compact {
             controller = instantiateCompactFirstController()
-            
         } else {
             controller = instantiateExpandedFirstController()
         }
@@ -38,7 +37,7 @@ class MessagesViewController: MSMessagesAppViewController {
             controller.view.leftAnchor.constraint(equalTo: view.leftAnchor),
             controller.view.rightAnchor.constraint(equalTo: view.rightAnchor),
             controller.view.topAnchor.constraint(equalTo: view.topAnchor),
-            controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(self.view.frame.height/15))
             ])
         
         controller.didMove(toParentViewController: self)
@@ -49,7 +48,7 @@ class MessagesViewController: MSMessagesAppViewController {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: CompactFirstPageViewController.storyboardIdentifier)
             as? CompactFirstPageViewController
             else { fatalError("Unable to instantiate an IceCreamsViewController from the storyboard") }
-        
+        controller.delegate = self
         return controller
     }
     
@@ -111,4 +110,11 @@ class MessagesViewController: MSMessagesAppViewController {
     
 }
 
-
+extension MSMessagesAppViewController : CompactFirstPageViewControllerDelegate {
+    
+    func requestPresentationSyle() {
+        requestPresentationStyle(.expanded)
+    }
+    
+    
+}
