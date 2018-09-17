@@ -10,15 +10,16 @@ import UIKit
 
 class TagCollectionViewCell : UICollectionViewCell {
     
+    weak var delegate : TagCollectionViewCellDelegate?
+    
     let textView : UITextView = {
         let TV = UITextView()
-        TV.font = UIFont.systemFont(ofSize: 12)
+        TV.font = UIFont.systemFont(ofSize: 11)
         TV.backgroundColor = .clear
-        TV.textColor = .white
+        TV.textColor = .black
         TV.isEditable = false
-        TV.backgroundColor = .black
+        TV.backgroundColor = .clear
         TV.isScrollEnabled = false
-        TV.layer.cornerRadius = 10
         TV.clipsToBounds = true
         TV.layer.masksToBounds = false
         TV.textAlignment = .center
@@ -26,9 +27,17 @@ class TagCollectionViewCell : UICollectionViewCell {
         return TV
     }()
     
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.layer.cornerRadius = 10
         setupViews()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleOnTap))
+        textView.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleOnTap() {
+        delegate?.handleTap(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,8 +49,14 @@ class TagCollectionViewCell : UICollectionViewCell {
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: self.topAnchor),
             textView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            textView.rightAnchor.constraint(equalTo: self.rightAnchor),
             textView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            textView.rightAnchor.constraint(equalTo: self.rightAnchor)
             ])
+        
     }
+    
+}
+
+protocol TagCollectionViewCellDelegate : class {
+    func handleTap(_ sender: TagCollectionViewCell)
 }
