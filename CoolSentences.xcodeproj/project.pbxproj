@@ -21,6 +21,7 @@
 		F53DD06C214202C9006D9A87 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A58F95112140A25B005E9A78 /* data.txt */; };
 		F5A04DE0215012F300BDD17B /* SentencesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A04DDF215012F300BDD17B /* SentencesCollectionViewController.swift */; };
 		F5F0C290214ED59400425244 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0C28F214ED59400425244 /* TagCollectionViewCell.swift */; };
+		F5F4612921505FFA000A7035 /* SentenceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F4612821505FFA000A7035 /* SentenceCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		F52E3EF02148AD02003B79A2 /* ExpandedFirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFirstPageViewController.swift; sourceTree = "<group>"; };
 		F5A04DDF215012F300BDD17B /* SentencesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentencesCollectionViewController.swift; sourceTree = "<group>"; };
 		F5F0C28F214ED59400425244 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		F5F4612821505FFA000A7035 /* SentenceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				F52C8B2E21409F3600B8A32D /* MessagesViewController.swift */,
 				F52E3EEE2148A6FB003B79A2 /* CompactFirstPageViewController.swift */,
 				F52E3EF02148AD02003B79A2 /* ExpandedFirstPageViewController.swift */,
+				F5F4612821505FFA000A7035 /* SentenceCollectionViewCell.swift */,
 				F5F0C28F214ED59400425244 /* TagCollectionViewCell.swift */,
 				F5A04DDF215012F300BDD17B /* SentencesCollectionViewController.swift */,
 				F52C8B3021409F3600B8A32D /* MainInterface.storyboard */,
@@ -247,6 +250,7 @@
 				F5F0C290214ED59400425244 /* TagCollectionViewCell.swift in Sources */,
 				F52C8B2F21409F3600B8A32D /* MessagesViewController.swift in Sources */,
 				F52E3EF12148AD02003B79A2 /* ExpandedFirstPageViewController.swift in Sources */,
+				F5F4612921505FFA000A7035 /* SentenceCollectionViewCell.swift in Sources */,
 				F5A04DE0215012F300BDD17B /* SentencesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

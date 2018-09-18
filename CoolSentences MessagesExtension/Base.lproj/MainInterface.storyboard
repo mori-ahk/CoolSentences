@@ -98,20 +98,22 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="7Ld-vV-S4J"/>
                     </view>
+                    <navigationItem key="navigationItem" id="00m-6w-Lgf"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                     <connections>
                         <outlet property="suggestionsTableView" destination="OnG-4j-7BP" id="Nd7-pe-v9B"/>
+                        <segue destination="Mhz-C1-0Jd" kind="show" identifier="tagsToSentences" id="rum-8Q-3b6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFc-nX-cAX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1332.8" y="31.484257871064472"/>
+            <point key="canvasLocation" x="2272" y="31.484257871064472"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Sentences Collection View Controller-->
         <scene sceneID="Xtt-kI-z6k">
             <objects>
-                <collectionViewController id="Mhz-C1-0Jd" sceneMemberID="viewController">
+                <collectionViewController id="Mhz-C1-0Jd" customClass="SentencesCollectionViewController" customModule="CoolSentences_MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hjv-jT-yda">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +125,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="sentenceCellIdentifier" id="87I-Sf-tOp">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="sentenceCellIdentifier" id="87I-Sf-tOp" customClass="SentenceCollectionViewCell" customModule="CoolSentences_MessagesExtension" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -141,7 +143,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZ6-rF-yoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2078" y="31"/>
+            <point key="canvasLocation" x="3016.8000000000002" y="30.584707646176913"/>
         </scene>
     </scenes>
 </document>
