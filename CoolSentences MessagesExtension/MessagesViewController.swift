@@ -56,7 +56,7 @@ class MessagesViewController: MSMessagesAppViewController {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: ExpandedFirstPageViewController.storyboardIdentifier)
             as? ExpandedFirstPageViewController
             else { fatalError("Unable to instantiate a BuildIceCreamViewController from the storyboard") }
-        
+        controller.delegate = self
         return controller
     }
     
@@ -67,45 +67,22 @@ class MessagesViewController: MSMessagesAppViewController {
             child.removeFromParentViewController()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
-    
+
+
     // MARK: - Conversation Handling
     
     
     override func willBecomeActive(with conversation: MSConversation) {
         super.willBecomeActive(with: conversation)
         presentViewController(with: presentationStyle)
- 
-    }
-    
-    override func didResignActive(with conversation: MSConversation) {
-
-    }
-    
-    override func didReceive(_ message: MSMessage, conversation: MSConversation) {
-
-    }
-    
-    override func didStartSending(_ message: MSMessage, conversation: MSConversation) {
-    }
-    
-    override func didCancelSending(_ message: MSMessage, conversation: MSConversation) {
-
     }
     
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         removeAllChildViewControllers()
-
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         presentViewController(with: presentationStyle)
- 
     }
     
 }
@@ -115,6 +92,22 @@ extension MSMessagesAppViewController : CompactFirstPageViewControllerDelegate {
     func requestPresentationSyle() {
         requestPresentationStyle(.expanded)
     }
+    
+}
+
+extension MessagesViewController : ExpandedFirstPageViewControllerDelegate {
+    
+    func didTap(_ controller: ExpandedFirstPageViewController, didSelect sentence: Sentence) {
+        guard let conversation = activeConversation else { fatalError("Expected a conversation")}
+        conversation.insertText(sentence.text) { (error) in
+            print("\(error?.localizedDescription)")
+        }
+
+        dismiss()
+    }
+    
+    
+
     
     
 }

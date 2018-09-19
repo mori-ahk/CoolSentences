@@ -72,6 +72,9 @@ class Warehouse {
     }
     
     func getSentences( withHashtags tags: [String]) -> [Sentence] {
+        if tags.count == 0 {
+            return []
+        }
         var editedTags: [String] = []
         tags.forEach({editedTags.append(String($0.dropFirst()))})
         return sentences.filter {canFind(editedTags, in: $0.tags)}
