@@ -75,9 +75,7 @@ class Warehouse {
         if tags.count == 0 {
             return []
         }
-        var editedTags: [String] = []
-        tags.forEach({editedTags.append(String($0.dropFirst()))})
-        return sentences.filter {canFind(editedTags, in: $0.tags)}
+        return sentences.filter {canFind(tags, in: $0.tags)}
     }
     
     private func canFind(_ tags: [String], in sentenceTags: [String]) -> Bool {

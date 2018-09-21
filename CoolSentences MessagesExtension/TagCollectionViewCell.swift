@@ -14,8 +14,7 @@ class TagCollectionViewCell : UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 11)
         label.backgroundColor = .clear
-        label.textColor = .black
-        label.backgroundColor = .clear
+        label.textColor = .white
         label.clipsToBounds = true
         label.layer.masksToBounds = false
         label.textAlignment = .center

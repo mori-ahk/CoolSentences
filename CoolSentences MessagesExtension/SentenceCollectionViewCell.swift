@@ -15,7 +15,7 @@ class SentenceCollectionViewCell : UICollectionViewCell {
         let TV = UILabel()
         TV.font = UIFont.systemFont(ofSize: 12)
         TV.backgroundColor = .clear
-        TV.textColor = .black
+        TV.textColor = .white
         TV.clipsToBounds = true
         TV.layer.masksToBounds = false
         TV.textAlignment = .left
@@ -27,19 +27,11 @@ class SentenceCollectionViewCell : UICollectionViewCell {
     let sourceLabel : UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
-        label.textColor = .black
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    let view : UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-        
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,14 +49,14 @@ class SentenceCollectionViewCell : UICollectionViewCell {
         self.addSubview(sourceLabel)
         
         NSLayoutConstraint.activate([
-            bodyTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
-            bodyTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4),
+            bodyTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: -2),
+            bodyTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 6),
             bodyTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4),
             ])
         
         NSLayoutConstraint.activate([
             sourceLabel.topAnchor.constraint(equalTo: self.bodyTextView.bottomAnchor, constant: 2),
-            sourceLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4),
+            sourceLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 6),
             sourceLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4),
             sourceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
             ])

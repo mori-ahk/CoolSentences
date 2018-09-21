@@ -18,20 +18,20 @@ class ExpandedFirstPageViewController: UIViewController {
     private var selectedTags = [String]()
     private var tagsCollectionViewHeightConstraint : NSLayoutConstraint?
     private var searchBarWidthConstraint : NSLayoutConstraint?
+    private var sentenceCollectionViewTopAnchor : NSLayoutConstraint?
+    private var isUserEditingSearchField: Bool?
+
     weak var delegate : ExpandedFirstPageViewControllerDelegate?
     
     var searchController : UISearchController! {
         didSet {
-            searchController.view.backgroundColor = .clear
             searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
-            searchController.searchBar.backgroundColor = .red
         }
     }
     
     lazy var tagsCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let rect = CGRect(x: 0, y: self.searchController.searchBar.frame.height, width: self.view.frame.width, height: 10)
-        let cv = UICollectionView(frame: rect, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         cv.delegate = self
         cv.dataSource = self
@@ -48,7 +48,7 @@ class ExpandedFirstPageViewController: UIViewController {
         CV.delegate = self
         CV.dataSource = self
         CV.backgroundColor = .white
-        CV.isHidden = selectedTags.count == 0 ? true : false
+        CV.isHidden = true
         CV.translatesAutoresizingMaskIntoConstraints = false
         return CV
         
@@ -57,10 +57,11 @@ class ExpandedFirstPageViewController: UIViewController {
     let goButton: UIButton = {
        let button = UIButton()
         button.setTitle("Go", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .lightGray
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
         button.isHidden = false
         button.layer.cornerRadius = 10
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(onGoButton), for: .touchUpInside)
         return button
@@ -68,12 +69,14 @@ class ExpandedFirstPageViewController: UIViewController {
     
     
     @objc func onGoButton() {
+        //TODO: Refactor this part
         sentences = Warehouse.sharedInstance().getSentences(withHashtags: selectedTags)
         UIView.animate(withDuration: 0.3) {
             self.suggestionsTableView.alpha = 0
             self.sentencesCollectionView.alpha = 1
         }
         self.sentencesCollectionView.isHidden = false
+        self.tagsCollectionView.isHidden = true
         sentencesCollectionView.reloadData()
     }
     
@@ -81,7 +84,6 @@ class ExpandedFirstPageViewController: UIViewController {
         didSet {
             suggestionsTableView.delegate = self
             suggestionsTableView.dataSource = self
-            suggestionsTableView.backgroundColor = .yellow
             suggestionsTableView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
@@ -93,20 +95,6 @@ class ExpandedFirstPageViewController: UIViewController {
         self.view.addSubview(sentencesCollectionView)
         self.view.addSubview(goButton)
         
-        NSLayoutConstraint.activate([
-            suggestionsTableView.topAnchor.constraint(equalTo: self.tagsCollectionView.bottomAnchor, constant: 4),
-            suggestionsTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            suggestionsTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            suggestionsTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            ])
-        
-        NSLayoutConstraint.activate([
-            sentencesCollectionView.topAnchor.constraint(equalTo: self.tagsCollectionView.bottomAnchor, constant: 4),
-            sentencesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            sentencesCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            sentencesCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            ])
-        
         searchBarWidthConstraint = searchController.searchBar.widthAnchor.constraint(equalToConstant: self.view.frame.width)
         NSLayoutConstraint.activate([
             searchController.searchBar.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -115,20 +103,36 @@ class ExpandedFirstPageViewController: UIViewController {
             searchController.searchBar.heightAnchor.constraint(equalToConstant: 40),
             ])
         
-        NSLayoutConstraint.activate([
-            goButton.topAnchor.constraint(equalTo: self.view.topAnchor),
-            goButton.leftAnchor.constraint(equalTo: self.searchController.searchBar.rightAnchor),
-            goButton.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            goButton.heightAnchor.constraint(equalToConstant: 40),
-            ])
-        
         tagsCollectionViewHeightConstraint = tagsCollectionView.heightAnchor.constraint(equalToConstant: 0)
         NSLayoutConstraint.activate([
-            tagsCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.searchController.searchBar.frame.height),
+            tagsCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.searchController.searchBar.frame.height - 5),
             tagsCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             tagsCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             tagsCollectionViewHeightConstraint ?? NSLayoutConstraint()
             ])
+        
+        NSLayoutConstraint.activate([
+            suggestionsTableView.topAnchor.constraint(equalTo: self.tagsCollectionView.bottomAnchor, constant: 2),
+            suggestionsTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            suggestionsTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            suggestionsTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            ])
+        
+        NSLayoutConstraint.activate([
+            goButton.topAnchor.constraint(equalTo: self.view.topAnchor),
+            goButton.leftAnchor.constraint(equalTo: self.searchController.searchBar.rightAnchor),
+            goButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 2),
+            goButton.heightAnchor.constraint(equalToConstant: 40),
+            ])
+        
+        NSLayoutConstraint.activate([
+            sentencesCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.searchController.searchBar.frame.height - 5),
+            sentencesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            sentencesCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            sentencesCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            ])
+
+       
 
     }
 
@@ -159,12 +163,18 @@ extension ExpandedFirstPageViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedTag = isFiltering() ? filteredResult?[indexPath.row] : suggestions[indexPath.row]
         if !selectedTags.contains(selectedTag ?? "") {
-            selectedTags.append("#\(selectedTag ?? "")" )
+            selectedTags.append("\(selectedTag ?? "")")
+            
+            //TODO: Refactor this part
             UIView.animate(withDuration: 0.3) {
                 self.tagsCollectionView.reloadData()
                 let height : CGFloat = self.tagsCollectionView.collectionViewLayout.collectionViewContentSize.height
                 self.tagsCollectionViewHeightConstraint?.constant = height
-                self.searchBarWidthConstraint?.constant = self.view.frame.width - 70
+                if self.isUserEditingSearchField ?? false {
+                    self.searchBarWidthConstraint?.constant = self.view.frame.width
+                } else {
+                    self.searchBarWidthConstraint?.constant = self.view.frame.width - 70
+                }
                 self.goButton.alpha = 1
                 self.view.layoutIfNeeded()
                 
@@ -189,7 +199,6 @@ extension ExpandedFirstPageViewController : UISearchBarDelegate, UISearchResults
         searchController.searchBar.showsCancelButton = false
         searchController.searchBar.searchBarStyle = .minimal
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.backgroundColor = .white
         self.definesPresentationContext = true
         
@@ -198,19 +207,23 @@ extension ExpandedFirstPageViewController : UISearchBarDelegate, UISearchResults
     
     //MARK: Search Bar Methods
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //TODO: Refactor this part
+        isUserEditingSearchField = true
         goButton.isHidden = true
         UIView.animate(withDuration: 0.3) {
             self.suggestionsTableView.alpha = 1
             self.sentencesCollectionView.alpha = 0
         }
-        searchBarWidthConstraint?.constant = self.view.frame.width
+        self.searchBarWidthConstraint?.constant = self.view.frame.width
+        self.tagsCollectionView.isHidden = false
         searchController.searchBar.showsCancelButton = false
         suggestionsTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBarWidthConstraint?.constant = selectedTags.count == 0 ? self.view.frame.width : self.view.frame.width - 70
+        isUserEditingSearchField = false
         goButton.isHidden = false
-        searchBarWidthConstraint?.constant = self.view.frame.width - 70
         suggestionsTableView.reloadData()
     }
     
@@ -218,7 +231,8 @@ extension ExpandedFirstPageViewController : UISearchBarDelegate, UISearchResults
         if !isFiltering() {
             suggestionsTableView.reloadData()
         }
-        searchController.searchBar.showsCancelButton = false
+        searchController.searchBar.showsCancelButton = true
+        self.onGoButton()
         searchController.searchBar.resignFirstResponder()
         self.view.endEditing(true)
     }
@@ -242,7 +256,6 @@ extension ExpandedFirstPageViewController : UISearchBarDelegate, UISearchResults
         })
     }
 
-    
     private func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -265,14 +278,14 @@ extension ExpandedFirstPageViewController : UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == tagsCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TagCollectionViewCell
-            cell.label.text = selectedTags[indexPath.row]
-            cell.backgroundColor = .lightGray
+            cell.label.text = "#\(selectedTags[indexPath.row])"
+            cell.backgroundColor = .black
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SentenceCollectionViewCell
             cell.bodyTextView.text = sentences[indexPath.row].text
             cell.sourceLabel.text = sentences[indexPath.row].source
-            cell.backgroundColor = .lightGray
+            cell.backgroundColor = UIColor.black.withAlphaComponent(0.7)
             return cell
         }
     }
@@ -280,14 +293,14 @@ extension ExpandedFirstPageViewController : UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == tagsCollectionView {
             var width: CGFloat = 80
-            let tag = selectedTags[indexPath.row]
+            let tag = "#\(selectedTags[indexPath.row])"
             width = estimateFrameForText(text: tag).width + 30
             return CGSize(width: width, height: 30)
         } else {
             var height: CGFloat = 80
             let text = sentences[indexPath.row].text
             height = estimateFrameForText(text: text).height + 40
-            return CGSize(width: self.view.frame.width, height: height)
+            return CGSize(width: self.view.frame.width - 10, height: height)
         }
     }
     
@@ -298,6 +311,7 @@ extension ExpandedFirstPageViewController : UICollectionViewDelegate, UICollecti
                 animate()
             } else {
                 selectedTags.remove(at: indexPath.row)
+                //TODO: Refactor this part
                 UIView.animate(withDuration: 0.3) {
                     self.tagsCollectionView.reloadData()
                     let height : CGFloat = self.tagsCollectionView.collectionViewLayout.collectionViewContentSize.height

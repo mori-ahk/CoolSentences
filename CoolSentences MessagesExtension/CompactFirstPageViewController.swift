@@ -22,8 +22,6 @@ class CompactFirstPageViewController : UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
