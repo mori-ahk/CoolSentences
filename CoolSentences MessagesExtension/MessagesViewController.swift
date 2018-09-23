@@ -37,7 +37,7 @@ class MessagesViewController: MSMessagesAppViewController {
             controller.view.leftAnchor.constraint(equalTo: view.leftAnchor),
             controller.view.rightAnchor.constraint(equalTo: view.rightAnchor),
             controller.view.topAnchor.constraint(equalTo: view.topAnchor),
-            controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(self.view.frame.height/12))
+            controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
         
         controller.didMove(toParentViewController: self)

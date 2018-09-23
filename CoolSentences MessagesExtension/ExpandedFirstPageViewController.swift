@@ -11,7 +11,9 @@ import UIKit
 class ExpandedFirstPageViewController: UIViewController {
     
     static let storyboardIdentifier = "expandedFirstPageStoryboardID"
-    let cellIdentifier = "suggestionCell"
+    let suggestionCellIdentifier = "suggestionCell"
+    let tagCellIdentifier = "tagCell"
+    let sentencesCellIdentifier = "sentencesCell"
     private var sentences = [Sentence]()
     private var suggestions = Array(Warehouse.sharedInstance().hashtags)
     private var filteredResult : [String]?
@@ -32,7 +34,7 @@ class ExpandedFirstPageViewController: UIViewController {
     lazy var tagsCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        cv.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: tagCellIdentifier)
         cv.delegate = self
         cv.dataSource = self
         cv.backgroundColor = .white
@@ -44,7 +46,7 @@ class ExpandedFirstPageViewController: UIViewController {
     lazy var sentencesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let CV = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        CV.register(SentenceCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        CV.register(SentenceCollectionViewCell.self, forCellWithReuseIdentifier: sentencesCellIdentifier)
         CV.delegate = self
         CV.dataSource = self
         CV.backgroundColor = .white
@@ -58,6 +60,7 @@ class ExpandedFirstPageViewController: UIViewController {
        let button = UIButton()
         button.setTitle("Go", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.titleLabel!.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         button.backgroundColor = .black
         button.isHidden = false
         button.layer.cornerRadius = 10
@@ -74,6 +77,7 @@ class ExpandedFirstPageViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.suggestionsTableView.alpha = 0
             self.sentencesCollectionView.alpha = 1
+            self.searchBarWidthConstraint?.constant = self.view.frame.width
         }
         self.sentencesCollectionView.isHidden = false
         self.tagsCollectionView.isHidden = true
@@ -155,7 +159,7 @@ extension ExpandedFirstPageViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier , for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: suggestionCellIdentifier , for: indexPath)
         cell.textLabel?.text = isFiltering() ? "\(filteredResult?[indexPath.row] ?? "")" : "\(suggestions[indexPath.row])"
         return cell
     }
@@ -277,14 +281,14 @@ extension ExpandedFirstPageViewController : UICollectionViewDelegate, UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == tagsCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TagCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: tagCellIdentifier, for: indexPath) as! TagCollectionViewCell
             cell.label.text = "#\(selectedTags[indexPath.row])"
             cell.backgroundColor = .black
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SentenceCollectionViewCell
-            cell.bodyTextView.text = sentences[indexPath.row].text
-            cell.sourceLabel.text = sentences[indexPath.row].source
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: sentencesCellIdentifier, for: indexPath) as! SentenceCollectionViewCell
+            let sentence = sentences[indexPath.row]
+            cell.renderCell(from: sentence)
             cell.backgroundColor = UIColor.black.withAlphaComponent(0.7)
             return cell
         }
@@ -294,12 +298,12 @@ extension ExpandedFirstPageViewController : UICollectionViewDelegate, UICollecti
         if collectionView == tagsCollectionView {
             var width: CGFloat = 80
             let tag = "#\(selectedTags[indexPath.row])"
-            width = estimateFrameForText(text: tag).width + 30
+            width = estimateFrameForText(text: tag, fontSize: 12).width + 30
             return CGSize(width: width, height: 30)
         } else {
             var height: CGFloat = 80
             let text = sentences[indexPath.row].text
-            height = estimateFrameForText(text: text).height + 40
+            height = estimateFrameForText(text: text, fontSize: 14).height + 40
             return CGSize(width: self.view.frame.width - 10, height: height)
         }
     }
@@ -350,10 +354,11 @@ extension ExpandedFirstPageViewController : UICollectionViewDelegate, UICollecti
     }
 
     
-    private func estimateFrameForText(text: String) -> CGRect {
+    private func estimateFrameForText(text: String, fontSize: CGFloat) -> CGRect {
         let size = CGSize(width: 256, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11)], context: nil)
+        let attributes =  [NSAttributedStringKey.font : UIFont.systemFont(ofSize: fontSize)]
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: attributes, context: nil)
         
     }
  

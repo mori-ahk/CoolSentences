@@ -12,7 +12,7 @@ class TagCollectionViewCell : UICollectionViewCell {
     
     let label : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.backgroundColor = .clear
         label.textColor = .white
         label.clipsToBounds = true
