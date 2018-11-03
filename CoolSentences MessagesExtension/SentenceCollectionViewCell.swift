@@ -12,6 +12,7 @@ class SentenceCollectionViewCell : UICollectionViewCell {
     
     private var firstOtherTagWidthAnchor : NSLayoutConstraint?
     private var secondOtherTagWidthAnchor : NSLayoutConstraint?
+    private var thirdOtherTagWidthAnchor : NSLayoutConstraint?
     
     let bodyTextView: UILabel = {
         let TV = UILabel()
@@ -50,6 +51,19 @@ class SentenceCollectionViewCell : UICollectionViewCell {
         return label
     }()
     
+    let thirdOtherTag : UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .black
+        label.layer.cornerRadius = 5
+        label.clipsToBounds = true
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    
     let sourceLabel : UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
@@ -58,7 +72,6 @@ class SentenceCollectionViewCell : UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     
     override init(frame: CGRect) {
@@ -75,9 +88,13 @@ class SentenceCollectionViewCell : UICollectionViewCell {
         self.bodyTextView.text = sentence.text
         self.firstOtherTag.text = "#\(sentence.tags[0])"
         self.secondOtherTag.text = "#\(sentence.tags[1])"
+        self.thirdOtherTag.text = sentence.tags.count == 2 ? NSString() as String : "#\(sentence.tags[2])"
         self.sourceLabel.text = sentence.source
         self.firstOtherTagWidthAnchor?.constant = estimateFrameForText(text: sentence.tags[0], fontSize: 12).width + 40
         self.secondOtherTagWidthAnchor?.constant = estimateFrameForText(text: sentence.tags[1], fontSize: 12).width + 40
+        if (sentence.tags.count != 2) {
+            self.thirdOtherTagWidthAnchor?.constant = estimateFrameForText(text: sentence.tags[2], fontSize: 12).width + 40
+        }
     }
 
     func setupViews() {
@@ -85,6 +102,7 @@ class SentenceCollectionViewCell : UICollectionViewCell {
         self.addSubview(sourceLabel)
         self.addSubview(firstOtherTag)
         self.addSubview(secondOtherTag)
+        self.addSubview(thirdOtherTag)
         
         NSLayoutConstraint.activate([
             bodyTextView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -106,6 +124,14 @@ class SentenceCollectionViewCell : UICollectionViewCell {
             secondOtherTag.leftAnchor.constraint(equalTo: self.firstOtherTag.rightAnchor, constant: 6),
             secondOtherTagWidthAnchor ?? NSLayoutConstraint(),
             secondOtherTag.heightAnchor.constraint(equalToConstant: 20)
+            ])
+        
+        thirdOtherTagWidthAnchor = thirdOtherTag.widthAnchor.constraint(equalToConstant: 0)
+        NSLayoutConstraint.activate([
+            thirdOtherTag.topAnchor.constraint(equalTo: self.bodyTextView.bottomAnchor, constant: 2),
+            thirdOtherTag.leftAnchor.constraint(equalTo: self.secondOtherTag.rightAnchor, constant: 6),
+            thirdOtherTagWidthAnchor ?? NSLayoutConstraint(),
+            thirdOtherTag.heightAnchor.constraint(equalToConstant: 20)
             ])
         
         NSLayoutConstraint.activate([
