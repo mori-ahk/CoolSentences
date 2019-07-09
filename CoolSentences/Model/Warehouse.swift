@@ -10,7 +10,6 @@ import Foundation
 
 class Warehouse {
     
-    
     private static var shared: Warehouse = {
         return Warehouse.init()
     }()
@@ -18,6 +17,7 @@ class Warehouse {
     class func sharedInstance() -> Warehouse {
         return shared
     }
+    
     private init() {
         updateModel()
     }
@@ -71,16 +71,16 @@ class Warehouse {
         }
     }
     
-    func getSentences( withHashtags tags: [String]) -> [Sentence] {
+    func getSentences(withHashtags tags: [String]) -> [Sentence] {
         if tags.count == 0 {
             return []
         }
-        return sentences.filter {canFind(tags, in: $0.tags)}
+        return sentences.filter {canFind(tags, in: $0.tags)}.shuffled()
     }
     
     private func canFind(_ tags: [String], in sentenceTags: [String]) -> Bool {
-        for i in 0 ..< tags.count {
-            if (!sentenceTags.contains(tags[i])) {
+        for tag in tags {
+            if sentenceTags.contains(tag) == false {
                 return false
             }
         }

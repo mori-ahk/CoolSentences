@@ -10,14 +10,10 @@ import UIKit
 import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
-    
+
     private func presentViewController(with presentationStyle: MSMessagesAppPresentationStyle) {
         removeAllChildViewControllers()
         
@@ -68,10 +64,8 @@ class MessagesViewController: MSMessagesAppViewController {
         }
     }
 
-
     // MARK: - Conversation Handling
-    
-    
+
     override func willBecomeActive(with conversation: MSConversation) {
         super.willBecomeActive(with: conversation)
         presentViewController(with: presentationStyle)
@@ -84,15 +78,12 @@ class MessagesViewController: MSMessagesAppViewController {
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         presentViewController(with: presentationStyle)
     }
-    
 }
 
 extension MSMessagesAppViewController : CompactFirstPageViewControllerDelegate {
-    
     func requestPresentationSyle() {
         requestPresentationStyle(.expanded)
     }
-    
 }
 
 extension MessagesViewController : ExpandedFirstPageViewControllerDelegate {
@@ -102,12 +93,6 @@ extension MessagesViewController : ExpandedFirstPageViewControllerDelegate {
         conversation.insertText(sentence.text) { (error) in
             print("\(error?.localizedDescription)")
         }
-
         dismiss()
     }
-    
-    
-
-    
-    
 }
