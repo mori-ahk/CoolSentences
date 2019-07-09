@@ -8,147 +8,149 @@
 
 import UIKit
 
-class SentenceCollectionViewCell : UICollectionViewCell {
+class SentenceCollectionViewCell: UICollectionViewCell {
+    private var tags: [EdgeInsetLabel] = []
+    private var tagsStackView: UIStackView = UIStackView()
+    private var bodyLabel: EdgeInsetLabel = EdgeInsetLabel()
+    private var sourceLabel: EdgeInsetLabel = EdgeInsetLabel()
+    private var wholeStackView: UIStackView = UIStackView()
     
-    private var firstOtherTagWidthAnchor : NSLayoutConstraint?
-    private var secondOtherTagWidthAnchor : NSLayoutConstraint?
-    private var thirdOtherTagWidthAnchor : NSLayoutConstraint?
+    private func initBodyLabel() {
+        bodyLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        bodyLabel.backgroundColor = .clear
+        bodyLabel.textColor = .white
+        bodyLabel.textAlignment = .left
+        bodyLabel.numberOfLines = 0
+        bodyLabel.layer.cornerRadius = 10
+        bodyLabel.clipsToBounds = true
+        bodyLabel.backgroundColor = #colorLiteral(red: 0.05303675681, green: 0.5231412649, blue: 0.9969810843, alpha: 1)
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
+        bodyLabel.textInsets = UIEdgeInsets(top: 1, left: 6, bottom: 1, right: 6)
+    }
     
-    let bodyTextView: UILabel = {
-        let TV = UILabel()
-        TV.font = UIFont.systemFont(ofSize: 14)
-        TV.backgroundColor = .clear
-        TV.textColor = .white
-        TV.clipsToBounds = true
-        TV.layer.masksToBounds = false
-        TV.textAlignment = .left
-        TV.numberOfLines = 0
-        TV.translatesAutoresizingMaskIntoConstraints = false
-        return TV
-    }()
+    private func initSourceLabel() {
+        sourceLabel.backgroundColor = .clear
+        sourceLabel.textColor = .black
+        sourceLabel.font = UIFont.systemFont(ofSize: 11)
+        sourceLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
     
-    let firstOtherTag : UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .black
-        label.layer.cornerRadius = 5
-        label.clipsToBounds = true
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private func initTags() {
+        tags = (0...2).map { _ in EdgeInsetLabel() }
+        tags.forEach { eachLabel in
+            eachLabel.textInsets = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
+            eachLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+            eachLabel.textAlignment = .center
+            eachLabel.textColor = .black
+            eachLabel.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
     
-    let secondOtherTag : UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .black
-        label.layer.cornerRadius = 5
-        label.clipsToBounds = true
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private func setupTagsStackView() {
+        initTags()
+        tagsStackView = UIStackView(arrangedSubviews: tags)
+        tagsStackView.spacing = 5
+        tagsStackView.axis = .horizontal
+        tagsStackView.alignment = .fill
+        tagsStackView.distribution = .fill
+        tagsStackView.translatesAutoresizingMaskIntoConstraints = false
+    }
     
-    let thirdOtherTag : UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .black
-        label.layer.cornerRadius = 5
-        label.clipsToBounds = true
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private func setupWholeStackView() {
+        initBodyLabel()
+        initSourceLabel()
+        setupTagsStackView()
+        wholeStackView = UIStackView(arrangedSubviews: [bodyLabel, tagsStackView, sourceLabel])
+        wholeStackView.spacing = 10
+        wholeStackView.axis = .vertical
+        wholeStackView.alignment = .leading
+        wholeStackView.distribution = .fill
+        wholeStackView.translatesAutoresizingMaskIntoConstraints = false
+        wholeStackView.layoutMargins = UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8)
+    }
+
+    private func setupConstraint() {
+        addSubview(wholeStackView)
+        NSLayoutConstraint.activate([
+            wholeStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            wholeStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            wholeStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8),
+            wholeStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8),
+            ])
+    }
     
+    private func setupView() {
+        setupWholeStackView()
+        setupConstraint()
+    }
     
-    let sourceLabel : UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .clear
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+    func renderCell(from sentence: Sentence) {
+        for (index, tag) in sentence.tags.enumerated() {
+            if index < tags.count {
+                tags[index].text = "#\(tag)"
+            }
+        }
+        
+        self.tags.forEach { tagLabel in
+            guard tagLabel.text != nil else {
+                tagLabel.isHidden = true
+                return
+            }
+        }
+        
+        bodyLabel.text = sentence.text
+        sourceLabel.text = sentence.source
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
-        self.layer.cornerRadius = 10
+        setupView()
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.1)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func renderCell(from sentence: Sentence) {
-        self.bodyTextView.text = sentence.text
-        self.firstOtherTag.text = "#\(sentence.tags[0])"
-        self.secondOtherTag.text = "#\(sentence.tags[1])"
-        self.thirdOtherTag.text = sentence.tags.count == 2 ? NSString() as String : "#\(sentence.tags[2])"
-        self.sourceLabel.text = sentence.source
-        self.firstOtherTagWidthAnchor?.constant = estimateFrameForText(text: sentence.tags[0], fontSize: 12).width + 40
-        self.secondOtherTagWidthAnchor?.constant = estimateFrameForText(text: sentence.tags[1], fontSize: 12).width + 40
-        if (sentence.tags.count != 2) {
-            self.thirdOtherTagWidthAnchor?.constant = estimateFrameForText(text: sentence.tags[2], fontSize: 12).width + 40
-        }
-    }
+}
 
-    func setupViews() {
-        self.addSubview(bodyTextView)
-        self.addSubview(sourceLabel)
-        self.addSubview(firstOtherTag)
-        self.addSubview(secondOtherTag)
-        self.addSubview(thirdOtherTag)
-        
-        NSLayoutConstraint.activate([
-            bodyTextView.topAnchor.constraint(equalTo: self.topAnchor),
-            bodyTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 6),
-            bodyTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4),
-            ])
-        
-        firstOtherTagWidthAnchor = firstOtherTag.widthAnchor.constraint(equalToConstant: 0)
-        NSLayoutConstraint.activate([
-            firstOtherTag.topAnchor.constraint(equalTo: self.bodyTextView.bottomAnchor, constant: 2),
-            firstOtherTag.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 6),
-            firstOtherTagWidthAnchor ?? NSLayoutConstraint(),
-            firstOtherTag.heightAnchor.constraint(equalToConstant: 20)
-            ])
-        
-        secondOtherTagWidthAnchor = secondOtherTag.widthAnchor.constraint(equalToConstant: 0)
-        NSLayoutConstraint.activate([
-            secondOtherTag.topAnchor.constraint(equalTo: self.bodyTextView.bottomAnchor, constant: 2),
-            secondOtherTag.leftAnchor.constraint(equalTo: self.firstOtherTag.rightAnchor, constant: 6),
-            secondOtherTagWidthAnchor ?? NSLayoutConstraint(),
-            secondOtherTag.heightAnchor.constraint(equalToConstant: 20)
-            ])
-        
-        thirdOtherTagWidthAnchor = thirdOtherTag.widthAnchor.constraint(equalToConstant: 0)
-        NSLayoutConstraint.activate([
-            thirdOtherTag.topAnchor.constraint(equalTo: self.bodyTextView.bottomAnchor, constant: 2),
-            thirdOtherTag.leftAnchor.constraint(equalTo: self.secondOtherTag.rightAnchor, constant: 6),
-            thirdOtherTagWidthAnchor ?? NSLayoutConstraint(),
-            thirdOtherTag.heightAnchor.constraint(equalToConstant: 20)
-            ])
-        
-        NSLayoutConstraint.activate([
-            sourceLabel.topAnchor.constraint(equalTo: self.firstOtherTag.bottomAnchor, constant: 2),
-            sourceLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 6),
-            sourceLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4),
-            sourceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
-            ])
-        
+class EdgeInsetLabel: UILabel {
+    var textInsets = UIEdgeInsets.zero {
+        didSet { invalidateIntrinsicContentSize() }
     }
     
-    private func estimateFrameForText(text: String, fontSize: CGFloat) -> CGRect {
-        let size = CGSize(width: 256, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        let attributes =  [NSAttributedStringKey.font : UIFont.systemFont(ofSize: fontSize)]
-        return NSString(string: text).boundingRect(with: size, options: options, attributes: attributes, context: nil)
-        
+    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let insetRect = UIEdgeInsetsInsetRect(bounds, textInsets)
+        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
+        let invertedInsets = UIEdgeInsets(top: -textInsets.top,
+                                          left: -textInsets.left,
+                                          bottom: -textInsets.bottom,
+                                          right: -textInsets.right)
+        return UIEdgeInsetsInsetRect(textRect, invertedInsets)
+    }
+    
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, textInsets))
+    }
+}
+
+extension EdgeInsetLabel {
+    var leftTextInset: CGFloat {
+        set { textInsets.left = newValue }
+        get { return textInsets.left }
     }
 
+    var rightTextInset: CGFloat {
+        set { textInsets.right = newValue }
+        get { return textInsets.right }
+    }
+
+    var topTextInset: CGFloat {
+        set { textInsets.top = newValue }
+        get { return textInsets.top }
+    }
+    
+    var bottomTextInset: CGFloat {
+        set { textInsets.bottom = newValue }
+        get { return textInsets.bottom }
+    }
 }

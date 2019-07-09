@@ -49,8 +49,6 @@ class CompactFirstPageViewController : UIViewController, UISearchBarDelegate {
             welcomeLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width)
             ])
     }
-    
-    
 }
 
 protocol CompactFirstPageViewControllerDelegate: class {

@@ -31,6 +31,4 @@ class Sentence: Codable {
         self.source = ""
         self.tags = []
     }
-    
-    
 }
